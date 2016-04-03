@@ -1,32 +1,54 @@
 <!doctype html>
-<html ng-app="indexApp">
+<html ng-app="IndexModule">
 <head>
 <meta charset="UTF-8"/>
-
+	
 <!-- vendor -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+
+<!-- Custom stylesheets -->
+<style>
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+</style>
 
 <title>This is UKGH</title>
 </head>
 
 <body ng-controller="IndexController">
+<div>
+	<input type="text" placeholder="Username" ng-model="username" ng-enter="loadUserData()"
+		ng-disabled="loadingUserData"/>
+	<button ng-click="loadUserData()" ng-disabled="loadingUserData">Get Followers</button>
+</div>
 
-<input type="text" placeholder="Username" ng-model="username" ng-enter="loadUserData()"
-	ng-disabled="loadingUserData"/>
-<button ng-click="loadUserData()" ng-disabled="loadingUserData">Get Followers</button>
-	
-{{userData}}
-	
+<div ng-show="loadingUserData"><i class="fa fa-refresh"></i></div>
+
+<network-graph user-data="userData"></network-graph>
+
 <!-- vendor -->
 <script src="js/angular.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/d3.min.js"></script>
 
 <!-- Custom -->
+<!-- Directives -->
 <script src="Directives/ng-enter.js"></script>
+<script src="Directives/barChart.js"></script>
+<script src="Directives/networkGraph.js"></script>
 <!-- Controllers -->
 <script src="Controllers/IndexController.js"></script>
+<!-- Modules -->
+<script src="Modules/IndexModule.js"></script>
 
 </body>
 </html>
