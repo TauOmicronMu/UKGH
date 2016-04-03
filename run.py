@@ -2,7 +2,11 @@ import requests
 from flask import Flask, jsonify
 from gitnetwork import follower_graph, api_url
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='website', static_url_path='')
+
+@app.route("/")
+def get_homepage():
+    return app.send_static_file("index.html");
 
 
 @app.route("/api/user/<string:username>")
