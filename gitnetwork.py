@@ -1,5 +1,7 @@
 import requests
 
+from key import *
+
 requests.get('https://api.github.com')
 
 user = input("Enter your GitHub username: ")
