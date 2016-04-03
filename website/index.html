@@ -1,14 +1,32 @@
 <!doctype html>
-<html>
+<html ng-app="indexApp">
 <head>
-<script src="js/angular.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<meta charset="UTF-8"/>
 
+<!-- vendor -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 
 <title>This is UKGH</title>
 </head>
-<body>
+
+<body ng-controller="IndexController">
+
+<input type="text" placeholder="Username" ng-model="username" ng-enter="loadUserData()"
+	ng-disabled="loadingUserData"/>
+<button ng-click="loadUserData()" ng-disabled="loadingUserData">Get Followers</button>
+	
+{{userData}}
+	
+<!-- vendor -->
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom -->
+<script src="Directives/ng-enter.js"></script>
+<!-- Controllers -->
+<script src="Controllers/IndexController.js"></script>
+
 </body>
 </html>
